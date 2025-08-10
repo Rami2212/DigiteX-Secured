@@ -42,6 +42,18 @@ const orderSchema = new mongoose.Schema(
             country: { type: String, required: true },
             phone: { type: String, required: true },
         },
+        dataOfOrder: {
+            type: String,
+            enum: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        },
+        preferredDeliveryTime: {
+            type: String,
+            enum: ['10AM', '11AM', '12PM'],
+        },
+        preferredDeliveryLocation: {
+            type: String,
+        },
+        message: String,
         paymentMethod: {
             type: String,
             enum: ['COD', 'Card', 'stripe', 'BankTransfer'],
