@@ -3,8 +3,6 @@ const connectDB = require("./config/db");
 const cors = require('cors');
 require('dotenv').config();
 const session = require('express-session');
-const passport = require('passport');
-require('./config/passport');
 const path = require('path');
 
 // Routes
@@ -34,9 +32,6 @@ app.use(session({
     saveUninitialized: false,
 }));
 
-app.use(passport.initialize());
-app.use(passport.session());
-
 // Connect to MongoDB
 connectDB();
 
@@ -44,16 +39,16 @@ connectDB();
 app.get('/', (req, res) => {
     res.send('Hello from backend!');
 });
-app.use('/auth', authRoutes);
-app.use('/categories', categoryRoutes);
-app.use('/users', userRoutes);
-app.use('/addons', addonRoutes);
-app.use('/products', productRoutes);
-app.use('/cart', cartRoutes);
-app.use('/orders', orderRoutes);
-app.use('/payments', paymentRoutes);
-app.use('/wishlist', wishlistRoutes);
-app.use('/contact', contactRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/categories', categoryRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/addons', addonRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/cart', cartRoutes);
+app.use('/api/orders', orderRoutes);
+app.use('/api/payments', paymentRoutes);
+app.use('/api/wishlist', wishlistRoutes);
+app.use('/api/contact', contactRoutes);
 
 // Start server
 app.listen(PORT, () => {

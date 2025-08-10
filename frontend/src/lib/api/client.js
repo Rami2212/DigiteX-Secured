@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const BACKEND_URL = import.meta.env.VITE_BACKENDURL;
 
-const baseURL = 'https://digitex-app.azurewebsites.net/api'
+const baseURL = 'http://localhost:5000/api'
 // In your frontend API file
 const api = axios.create({
   baseURL: baseURL,
